@@ -1,0 +1,11 @@
+project: savantenvs/libfaketime
+target: fuzz_timestamp_load
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz_timestamp_load/testsuite
+cmds:
+  - cmd: /mayhem/fuzz_timestamp_load @@
+    afl: true
+    timeout: 3
+    env:
+      MFUZZ_COMPAT_LEVEL: '2'
